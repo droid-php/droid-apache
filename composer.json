@@ -26,5 +26,8 @@
             "Droid\\Plugin\\Apache\\": "src/"
         }
     },
+    "bin": [
+        "bin/droid-apache"
+    ],
     "license": "MIT"
 }

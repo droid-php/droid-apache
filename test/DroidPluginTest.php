@@ -17,6 +17,10 @@ class DroidPluginTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertSame(
             array(
+                'Droid\Plugin\Apache\Command\ApacheModuleDisableCommand',
+                'Droid\Plugin\Apache\Command\ApacheModuleEnableCommand',
+                'Droid\Plugin\Apache\Command\ApacheSiteDisableCommand',
+                'Droid\Plugin\Apache\Command\ApacheSiteEnableCommand',
             ),
             array_map(
                 function ($x) {

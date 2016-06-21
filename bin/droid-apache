@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Application;
+
+use Droid\Plugin\Apache\DroidPlugin;
+
+$loader = __DIR__ . '/../vendor/autoload.php';
+
+if (!file_exists($loader)) {
+    $loader = __DIR__ . '/../../../autoload.php';
+}
+
+if (!file_exists($loader)) {
+    die(
+        'You must set up the project dependencies, run the following commands:' . PHP_EOL .
+        'curl -s http://getcomposer.org/installer | php' . PHP_EOL .
+        'php composer.phar install' . PHP_EOL
+    );
+}
+
+require $loader;
+
+$application = new Application('Droid Apache', '1.0.0');
+$application->setCatchExceptions(true);
+$registry = new DroidPlugin($application);
+foreach ($registry->getCommands() as $command) {
+    $application->add($command);
+}
+$application->run();
