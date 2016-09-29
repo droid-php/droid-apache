@@ -29,12 +29,17 @@ class ApacheModuleDisableCommandTest extends \PHPUnit_Framework_TestCase
         ;
         $this->processBuilder = $this
             ->getMockBuilder(ProcessBuilder::class)
-            ->setMethods(array('setArguments', 'getProcess'))
+            ->setMethods(array('setArguments', 'setTimeout', 'getProcess'))
             ->getMock()
         ;
         $this
             ->processBuilder
             ->method('setArguments')
+            ->willReturnSelf()
+        ;
+        $this
+            ->processBuilder
+            ->method('setTimeout')
             ->willReturnSelf()
         ;
         $this
@@ -74,6 +79,12 @@ class ApacheModuleDisableCommandTest extends \PHPUnit_Framework_TestCase
             )
         ;
         $this
+            ->processBuilder
+            ->expects($this->once())
+            ->method('setTimeout')
+            ->with($this->equalTo(0.0))
+        ;
+        $this
             ->process
             ->expects($this->once())
             ->method('run')
@@ -106,6 +117,12 @@ class ApacheModuleDisableCommandTest extends \PHPUnit_Framework_TestCase
                     '/etc/apache2/mods-enabled/a_module.conf',
                 ))
             )
+        ;
+        $this
+            ->processBuilder
+            ->expects($this->exactly(2))
+            ->method('setTimeout')
+            ->with($this->equalTo(0.0))
         ;
         $this
             ->process
@@ -162,6 +179,12 @@ class ApacheModuleDisableCommandTest extends \PHPUnit_Framework_TestCase
             )
         ;
         $this
+            ->processBuilder
+            ->expects($this->exactly(3))
+            ->method('setTimeout')
+            ->with($this->equalTo(0.0))
+        ;
+        $this
             ->process
             ->expects($this->exactly(3))
             ->method('run')
@@ -204,6 +227,12 @@ class ApacheModuleDisableCommandTest extends \PHPUnit_Framework_TestCase
                     '/etc/apache2/mods-enabled/a_module.conf',
                 ))
             )
+        ;
+        $this
+            ->processBuilder
+            ->expects($this->exactly(3))
+            ->method('setTimeout')
+            ->with($this->equalTo(0.0))
         ;
         $this
             ->process
@@ -250,6 +279,12 @@ class ApacheModuleDisableCommandTest extends \PHPUnit_Framework_TestCase
                     '/etc/apache2/mods-enabled/a_module.conf'
                 ))
             )
+        ;
+        $this
+            ->processBuilder
+            ->expects($this->exactly(2))
+            ->method('setTimeout')
+            ->with($this->equalTo(0.0))
         ;
         $this
             ->process

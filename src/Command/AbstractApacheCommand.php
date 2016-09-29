@@ -127,6 +127,7 @@ abstract class AbstractApacheCommand extends Command
         return $this
             ->processBuilder
             ->setArguments($arguments)
+            ->setTimeout(0.0)
             ->getProcess()
         ;
     }

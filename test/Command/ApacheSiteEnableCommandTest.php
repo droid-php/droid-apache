@@ -29,12 +29,17 @@ class ApacheSiteEnableCommandTest extends \PHPUnit_Framework_TestCase
         ;
         $this->processBuilder = $this
             ->getMockBuilder(ProcessBuilder::class)
-            ->setMethods(array('setArguments', 'getProcess'))
+            ->setMethods(array('setArguments', 'setTimeout', 'getProcess'))
             ->getMock()
         ;
         $this
             ->processBuilder
             ->method('setArguments')
+            ->willReturnSelf()
+        ;
+        $this
+            ->processBuilder
+            ->method('setTimeout')
             ->willReturnSelf()
         ;
         $this
@@ -74,6 +79,12 @@ class ApacheSiteEnableCommandTest extends \PHPUnit_Framework_TestCase
             )
         ;
         $this
+            ->processBuilder
+            ->expects($this->once())
+            ->method('setTimeout')
+            ->with($this->equalTo(0.0))
+        ;
+        $this
             ->process
             ->expects($this->once())
             ->method('run')
@@ -106,6 +117,12 @@ class ApacheSiteEnableCommandTest extends \PHPUnit_Framework_TestCase
                     '/etc/apache2/sites-enabled/a_site.conf',
                 ))
             )
+        ;
+        $this
+            ->processBuilder
+            ->expects($this->exactly(2))
+            ->method('setTimeout')
+            ->with($this->equalTo(0.0))
         ;
         $this
             ->process
@@ -164,6 +181,12 @@ class ApacheSiteEnableCommandTest extends \PHPUnit_Framework_TestCase
             )
         ;
         $this
+            ->processBuilder
+            ->expects($this->exactly(3))
+            ->method('setTimeout')
+            ->with($this->equalTo(0.0))
+        ;
+        $this
             ->process
             ->expects($this->exactly(3))
             ->method('run')
@@ -210,6 +233,12 @@ class ApacheSiteEnableCommandTest extends \PHPUnit_Framework_TestCase
             )
         ;
         $this
+            ->processBuilder
+            ->expects($this->exactly(3))
+            ->method('setTimeout')
+            ->with($this->equalTo(0.0))
+        ;
+        $this
             ->process
             ->expects($this->exactly(3))
             ->method('run')
@@ -254,6 +283,12 @@ class ApacheSiteEnableCommandTest extends \PHPUnit_Framework_TestCase
                     '/etc/apache2/sites-enabled/a_site.conf',
                 ))
             )
+        ;
+        $this
+            ->processBuilder
+            ->expects($this->exactly(2))
+            ->method('setTimeout')
+            ->with($this->equalTo(0.0))
         ;
         $this
             ->process
