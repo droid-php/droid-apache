@@ -35,8 +35,8 @@ class ApacheModuleEnableCommand extends AbstractApacheCommand
     {
         $this->activateCheckMode($input);
 
-        $confname = $this->getConfName($input->getArgument('module-name'));
-        $confFilename = $this->getConfFilename($input->getArgument('module-name'));
+        $confname = $this->getConfName($input->getArgument('module-name'), '.load');
+        $confFilename = $this->getConfFilename($input->getArgument('module-name'), '.load');
 
         if (! $this->available($confFilename)) {
             throw new RuntimeException(

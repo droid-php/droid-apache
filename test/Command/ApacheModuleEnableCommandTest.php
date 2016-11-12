@@ -74,7 +74,7 @@ class ApacheModuleEnableCommandTest extends \PHPUnit_Framework_TestCase
                     'stat',
                     '-c',
                     '%F',
-                    '/etc/apache2/mods-available/not_a_module.conf'
+                    '/etc/apache2/mods-available/not_a_module.load'
                 )
             )
         ;
@@ -108,13 +108,13 @@ class ApacheModuleEnableCommandTest extends \PHPUnit_Framework_TestCase
                     'stat',
                     '-c',
                     '%F',
-                    '/etc/apache2/mods-available/a_module.conf',
+                    '/etc/apache2/mods-available/a_module.load',
                 )),
                 array(array(
                     'stat',
                     '-c',
                     '%F',
-                    '/etc/apache2/mods-enabled/a_module.conf',
+                    '/etc/apache2/mods-enabled/a_module.load',
                 ))
             )
         ;
@@ -164,19 +164,19 @@ class ApacheModuleEnableCommandTest extends \PHPUnit_Framework_TestCase
                     'stat',
                     '-c',
                     '%F',
-                    '/etc/apache2/mods-available/a_module.conf',
+                    '/etc/apache2/mods-available/a_module.load',
                 )),
                 array(array(
                     'stat',
                     '-c',
                     '%F',
-                    '/etc/apache2/mods-enabled/a_module.conf',
+                    '/etc/apache2/mods-enabled/a_module.load',
                 )),
                 array(array(
                     'ln',
                     '-s',
-                    '/etc/apache2/mods-available/a_module.conf',
-                    '/etc/apache2/mods-enabled/a_module.conf',
+                    '/etc/apache2/mods-available/a_module.load',
+                    '/etc/apache2/mods-enabled/a_module.load',
                 ))
             )
         ;
@@ -216,19 +216,19 @@ class ApacheModuleEnableCommandTest extends \PHPUnit_Framework_TestCase
                     'stat',
                     '-c',
                     '%F',
-                    '/etc/apache2/mods-available/a_module.conf',
+                    '/etc/apache2/mods-available/a_module.load',
                 )),
                 array(array(
                     'stat',
                     '-c',
                     '%F',
-                    '/etc/apache2/mods-enabled/a_module.conf',
+                    '/etc/apache2/mods-enabled/a_module.load',
                 )),
                 array(array(
                     'ln',
                     '-s',
-                    '/etc/apache2/mods-available/a_module.conf',
-                    '/etc/apache2/mods-enabled/a_module.conf',
+                    '/etc/apache2/mods-available/a_module.load',
+                    '/etc/apache2/mods-enabled/a_module.load',
                 ))
             )
         ;
@@ -274,13 +274,13 @@ class ApacheModuleEnableCommandTest extends \PHPUnit_Framework_TestCase
                     'stat',
                     '-c',
                     '%F',
-                    '/etc/apache2/mods-available/a_module.conf',
+                    '/etc/apache2/mods-available/a_module.load',
                 )),
                 array(array(
                     'stat',
                     '-c',
                     '%F',
-                    '/etc/apache2/mods-enabled/a_module.conf',
+                    '/etc/apache2/mods-enabled/a_module.load',
                 ))
             )
         ;

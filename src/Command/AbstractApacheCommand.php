@@ -28,14 +28,14 @@ abstract class AbstractApacheCommand extends Command
     abstract protected function getEnabledDir();
     abstract protected function getAvailableDir();
 
-    protected function getConfName($argument)
+    protected function getConfName($argument, $extension = '.conf')
     {
-        return $this->normaliser->normaliseConfName($argument);
+        return $this->normaliser->normaliseConfName($argument, $extension);
     }
 
-    protected function getConfFilename($argument)
+    protected function getConfFilename($argument, $extension = '.conf')
     {
-        return $this->normaliser->normaliseConfFilename($argument);
+        return $this->normaliser->normaliseConfFilename($argument, $extension);
     }
 
     protected function available($confFilename)

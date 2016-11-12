@@ -21,6 +21,10 @@ class NormaliserTest extends \PHPUnit_Framework_TestCase
         );
         $this->assertSame(
             'foo_module',
+            $this->norm->normaliseConfName('foo_module.extension', '.extension')
+        );
+        $this->assertSame(
+            'foo_module',
             $this->norm->normaliseConfName('foo_module')
         );
     }
@@ -32,8 +36,16 @@ class NormaliserTest extends \PHPUnit_Framework_TestCase
             $this->norm->normaliseConfFilename('foo_module')
         );
         $this->assertSame(
+            'foo_module.extension',
+            $this->norm->normaliseConfFilename('foo_module', '.extension')
+        );
+        $this->assertSame(
             'foo_module.conf',
             $this->norm->normaliseConfFilename('foo_module.conf')
+        );
+        $this->assertSame(
+            'foo_module.extension',
+            $this->norm->normaliseConfFilename('foo_module.extension', '.extension')
         );
     }
 }
